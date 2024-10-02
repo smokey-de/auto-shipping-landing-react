@@ -9,7 +9,7 @@ import { Notifications } from "@mantine/notifications";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 
-import './index.css';
+import './styles/global.scss';
 const ErrorFallback = ({ error }: FallbackProps) => {
     console.log(error, 'error boundary');
     return <AppError />;
@@ -17,15 +17,15 @@ const ErrorFallback = ({ error }: FallbackProps) => {
 
 export const App: FC = () => {
     return (
-        <>
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <MantineProvider>
-                <Notifications />
-                <Suspense fallback={<div >Loading...</div>}>
-                    <RoutesViews />
-                </Suspense>
-              </MantineProvider>
-            </ErrorBoundary>
-        </>
+      <>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <MantineProvider>
+            <Notifications />
+            <Suspense fallback={<div >Loading...</div>}>
+                <RoutesViews />
+            </Suspense>
+          </MantineProvider>
+        </ErrorBoundary>
+      </>
     );
 };

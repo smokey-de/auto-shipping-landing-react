@@ -7,7 +7,6 @@ interface IProps {
 export const Layout: FC<IProps> = ({ children }) => {
   return (
       <div>
-        <Navbar/>
         <div >{children}</div>
       </div>
   );
