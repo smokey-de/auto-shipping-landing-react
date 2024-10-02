@@ -1,0 +1,58 @@
+.contentTitle {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 130%;
+  text-transform: uppercase;
+
+  @media (max-width: 1044px) {
+    font-size: 30px;
+  }
+}
+
+.content {
+  font-weight: 900;
+  height: 80px;
+  font-size: 50px;
+  overflow: hidden;
+
+  @media (max-width: 1044px) {
+    height: 40px;
+    font-size: 30px;
+  }
+
+  .contentAnimation {
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: _ng_content;
+    list-style: none;
+    margin-top: -1px;
+    text-align: left;
+
+    @keyframes _ng_content {
+      0%, 12.66%, 100% {
+        transform: translateZ(0);
+      }
+      16.66%, 29.32% {
+        transform: translate3d(0, -25%, 0);
+      }
+      33.32%, 45.98% {
+        transform: translate3d(0, -50%, 0);
+      }
+      49.98%, 62.64% {
+        transform: translate3d(0, -75%, 0);
+      }
+      66.64%, 79.3% {
+        transform: translate3d(0, -50%, 0);
+      }
+      83.3%, 95.96% {
+        transform: translate3d(0, -25%, 0);
+      }
+    }
+
+    .contentAnimationText {
+      color: #ff7b54;
+      text-transform: uppercase;
+    }
+  }
+}

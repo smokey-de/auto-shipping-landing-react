@@ -1,0 +1,50 @@
+.formWrapper{
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 28px #2033520a;
+  padding: 24px;
+  width: 100%;
+  .formTitle{
+    color: #040404;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 130%;
+
+    @media (max-width: 1044px) {
+      line-height: 1;
+      font-size: 20px;
+    }
+    & a {
+      color: #ff7b54;
+
+      @media (max-width: 1044px) {
+        padding-top: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .formTitleHr{
+    background: #f4f4f5;
+    margin-top: 7px;
+    margin-bottom: 16px;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+  }
+
+  .formCheckBoxText{
+    font-size: 14px;
+  }
+
+  .formBtn{
+    background-color: #ff7b54;
+    transition: all .3s ease-in-out;
+    padding: 0 24px;
+    height: 56px;
+    font-size: 20px;
+    font-weight: bold;
+    &:hover{
+      background-color: #ce522c;
+    }
+  }
+}

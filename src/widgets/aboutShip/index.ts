@@ -1,0 +1,1 @@
+export { AboutShip } from "./ui";

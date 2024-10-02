@@ -1,0 +1,1 @@
+export { FooterGetBonusForm } from "./ui";

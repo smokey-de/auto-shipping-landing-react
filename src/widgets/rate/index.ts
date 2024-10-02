@@ -1,0 +1,1 @@
+export { RateByTrustPeople } from "./ui";

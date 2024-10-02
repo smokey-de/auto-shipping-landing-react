@@ -1,0 +1,45 @@
+.aboutShipWrapper{
+  background-color: #152948;
+  color: #fff;
+  padding: 48px 0;
+
+  .aboutShipTitle{
+    margin-bottom: 2rem;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 140%;
+    @media (max-width: 1044px) {
+      line-height: 1;
+      font-size: 30px;
+    }
+  }
+
+  .aboutShipItem{
+    margin-bottom: 30px;
+
+    .aboutShipItemTitle{
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: bold;
+
+      @media (max-width: 1044px) {
+        line-height: 1;
+        font-size: 20px;
+      }
+
+      .aboutShipItemTitleStep{
+        color: #768194;
+      }
+    }
+
+    .aboutShipItemText{
+      font-size: 20px;
+      line-height: 160%;
+      color: #ffffffbf;
+
+      @media (max-width: 1044px) {
+        font-size: 16px;
+      }
+    }
+  }
+}

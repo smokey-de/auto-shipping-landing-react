@@ -1,0 +1,82 @@
+.whyChooseWrapper{
+  background-color: #fff;
+  padding: 48px 0;
+
+  .whyChooseTitle{
+    color: #040404;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 140%;
+    margin-bottom: 2rem;
+    @media (max-width: 1044px) {
+      line-height: 1;
+      font-size: 30px;
+    }
+  }
+
+  .rateCard{
+    width: 100%;
+    background: #0060b7;
+    border: 1px solid #0060b7;
+    border-radius: 8px;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    padding-left: 1rem;
+
+    .rateCardText{
+      flex: 1;
+      p{
+        color: #fff;
+        font-size: 32px;
+        font-weight: bold;
+        line-height: 140%;
+        margin-left: 12px;
+
+        @media (max-width: 1044px) {
+          line-height: 1;
+          font-size: 28px;
+        }
+      }
+
+      h2{
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 140%;
+        margin-left: 12px;
+
+        @media (max-width: 1044px) {
+          line-height: 1;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .whyChooseItem{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    margin-bottom: 30px;
+
+    span{
+      border: 1px solid rgba(0, 96, 183, .2);
+      border-radius: 4px;
+      color: #0060b7;
+      font-size: 16px;
+      padding: 4px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    div{
+      font-size: 14px;
+      line-height: 140%;
+    }
+  }
+}
