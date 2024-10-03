@@ -100,50 +100,31 @@ export const HeaderContentForm = () => {
         />
 
         <Button fullWidth className={classes.formBtn} onClick={() => {
-          if (step === 1) {
-            const from = form.validateField('from');
-            const to = form.validateField('to');
-            const vehicle_size = form.validateField('vehicle_size');
-            const terms_of_service = form.validateField('terms_of_service');
-            if (from.error === null && to.error === null && vehicle_size.error === null) {
-              setStep(2);
-            } else {
-              form.setErrors({
-                from: from.error,
-                to: to.error,
-                vehicle_size: vehicle_size.error,
-                terms_of_service: terms_of_service.error,
-              });
-            }
-          } else if (step === 2) {
-            const vehicle_year = form.validateField('vehicle_year');
-            const vehicle_make = form.validateField('vehicle_make');
-            const vehicle_model = form.validateField('vehicle_model');
-            const terms_of_service = form.validateField('terms_of_service');
+          const validateAndSetErrors = (fields: (keyof FormValues)[]) => {
+            const errors = fields.reduce((acc, field) => {
+              const validation = form.validateField(field);
+              if (validation.error !== null) {
+                acc[field] = typeof validation.error === 'string' ? validation.error : String(validation.error);
+              }
+              return acc;
+            }, {} as Record<keyof FormValues, string | null>);
 
-            if (vehicle_year.error === null && vehicle_make.error === null && vehicle_model.error === null && terms_of_service.error === null) {
-              setStep(3);
+            if (Object.keys(errors).length === 0) {
+              setStep(step === 3 ? step : step + 1);
             } else {
-              form.setErrors({
-                vehicle_year: vehicle_year.error,
-                vehicle_make: vehicle_make.error,
-                vehicle_model: vehicle_model.error,
-                terms_of_service: terms_of_service.error,
-              });
+              form.setErrors(errors);
             }
+            return errors;
+          };
+
+          if (step === 1) {
+            validateAndSetErrors(['from', 'to', 'vehicle_size', 'terms_of_service']);
+          } else if (step === 2) {
+            validateAndSetErrors(['vehicle_year', 'vehicle_make', 'vehicle_model', 'terms_of_service']);
           } else if (step === 3) {
-            const from_email = form.validateField('from_email');
-            const pick_up_date = form.validateField('pick_up_date');
-            const terms_of_service = form.validateField('terms_of_service');
-            if (from_email.error === null && pick_up_date.error === null && terms_of_service.error === null) {
+            const errors = validateAndSetErrors(['from_email', 'pick_up_date', 'terms_of_service']);
+            if (Object.keys(errors).length === 0) {
               handleSubmit(form.getValues());
-              return;
-            } else {
-              form.setErrors({
-                from_email: from_email.error,
-                pick_up_date: pick_up_date.error,
-                terms_of_service: terms_of_service.error,
-              });
             }
           }
         }}>
@@ -172,7 +153,7 @@ const FirstStep = ({ form }: { form: UseFormReturnType<FormValues, any> }) => {
     form.setFieldValue(formKey, value, {
       forceUpdate: false,
     });
-    handleSearch(value,formKey);
+    handleSearch(value, formKey);
   };
 
   useEffect(() => {
@@ -180,11 +161,11 @@ const FirstStep = ({ form }: { form: UseFormReturnType<FormValues, any> }) => {
     handleSearchFetching('', 'to');
   }, []);
 
-  const handleSearch = useDebouncedCallback(async (query: string,formKey: keyof FormValues) => {
-   await handleSearchFetching(query,formKey);
+  const handleSearch = useDebouncedCallback(async (query: string, formKey: keyof FormValues) => {
+    await handleSearchFetching(query, formKey);
   }, 500);
 
-  const handleSearchFetching = async (query: string,formKey: keyof FormValues) => {
+  const handleSearchFetching = async (query: string, formKey: keyof FormValues) => {
     if (formKey === 'from') {
       const data = await getSearchResults(query);
       setAutoCompleteDataFrom(data);
@@ -192,7 +173,7 @@ const FirstStep = ({ form }: { form: UseFormReturnType<FormValues, any> }) => {
       const data = await getSearchResults(query);
       setAutoCompleteDataTo(data);
     }
-  }
+  };
 
   return (
     <>
