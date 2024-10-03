@@ -1,4 +1,6 @@
 import classes from "./index.module.scss";
+import { useRef } from 'react';
+import { useScroll, useTransform ,motion} from 'framer-motion';
 
 const aboutShip = [
   {
@@ -16,24 +18,39 @@ const aboutShip = [
 ];
 
 export const AboutShip = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['0 1', '1.33 1'],
+  });
+
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
     <section className={classes.aboutShipWrapper}>
-      <div className={"container"}>
-        <h2 className={classes.aboutShipTitle}>
-          Ship your vehicle in 3 easy steps
-        </h2>
-        {aboutShip.map((item, index) => (
-          <div key={index} className={classes.aboutShipItem}>
-            <h3 className={classes.aboutShipItemTitle}>
-              {item.title}{" "}
-              <span className={classes.aboutShipItemTitleStep}>
+      <motion.div className={"container"} ref={ref} style={{
+        scale: scaleProgress,
+        opacity: opacityProgress,
+      }}>
+        <div>
+          <h2 className={classes.aboutShipTitle}>
+            Ship your vehicle in 3 easy steps
+          </h2>
+          {aboutShip.map((item, index) => (
+            <div key={index} className={classes.aboutShipItem}>
+              <h3 className={classes.aboutShipItemTitle}>
+                {item.title}{" "}
+                <span className={classes.aboutShipItemTitleStep}>
                 (Step ${index + 1})
               </span>
-            </h3>
-            <p className={classes.aboutShipItemText}>{item.text}</p>
-          </div>
-        ))}
-      </div>
+              </h3>
+              <p className={classes.aboutShipItemText}>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 };

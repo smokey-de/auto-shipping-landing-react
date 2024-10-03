@@ -11,7 +11,6 @@ import "@mantine/notifications/styles.css";
 
 import './styles/global.scss';
 const ErrorFallback = ({ error }: FallbackProps) => {
-    console.log(error, 'error boundary');
     return <AppError />;
 };
 
@@ -21,7 +20,7 @@ export const App: FC = () => {
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <MantineProvider>
             <Notifications />
-            <Suspense fallback={<div >Loading...</div>}>
+            <Suspense fallback={ <Loading/>}>
                 <RoutesViews />
             </Suspense>
           </MantineProvider>
@@ -29,3 +28,10 @@ export const App: FC = () => {
       </>
     );
 };
+
+
+const Loading = () => {
+  return (
+    <div className={'loading'}/>
+  )
+}

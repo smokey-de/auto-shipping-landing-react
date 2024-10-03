@@ -5,3 +5,36 @@
 body {
   background-color: #050E1B !important;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &::before {
+    content: "Loading";
+    animation: loading 1s infinite;
+    color: #fff;
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+}
+
+@keyframes loading {
+  0% {
+    content: "Loading";
+  }
+  25% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  75% {
+    content: "Loading...";
+  }
+}

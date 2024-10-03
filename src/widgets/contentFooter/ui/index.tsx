@@ -11,6 +11,10 @@ import {
 import classes from "./index.module.scss";
 import { Flex } from "@mantine/core";
 import { FooterGetBonusForm } from "@/features/footerGetBonusForm";
+import { routeHistory } from '@/shared/config/routing/historyRouter';
+import { routePaths } from '@/shared/config/routing';
+import { TO_GMAIL } from '@/shared/helpers/constant';
+import dayjs from 'dayjs';
 
 export const ContentFooter = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
@@ -72,7 +76,7 @@ export const ContentFooter = () => {
               </div>
 
               <a
-                href="mailto:uniqueautoshippingllc@gmail.com"
+                href={`mailto: ${TO_GMAIL}`}
                 className="flex items-center gap-1"
               >
                 <span>
@@ -81,7 +85,7 @@ export const ContentFooter = () => {
                 <div>
                   <p className="text-sm text-gray-500">Contact us at</p>
                   <h3 className="text-sm text-white font-bold">
-                    support@uniqueautoshipping.com
+                    support@uniqueautoshipping.org
                   </h3>
                 </div>
               </a>
@@ -153,12 +157,15 @@ export const ContentFooter = () => {
             </li>
           </ul>
           <div>
-            <span className="text-sm font-medium text-white">
+            <span className="text-sm font-medium text-white"
+                  onClick={() =>
+                    routeHistory.push(routePaths.privacy)}
+            >
               Privacy Policy
             </span>
             <span className="ml-1 mr-1 text-white"> | </span>
             <span className="text-xs text-gray-500">
-              © 2024 Unique Auto Shipping. All rights reserved.
+              © {dayjs(new Date()).format('YYYY')} Unique Auto Shipping. All rights reserved.
             </span>
           </div>
         </Flex>

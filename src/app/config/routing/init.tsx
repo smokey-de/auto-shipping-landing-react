@@ -8,6 +8,7 @@ import {ChildrenProp} from '@/shared/types/utility';
 import {PrivateRoute} from './private-route';
 
 const Home = lazy(() => import('@/pages/home'));
+const Privacy = lazy(() => import('@/pages/privacy'));
 
 interface RouteView {
   element: JSX.Element;
@@ -23,21 +24,12 @@ const routesView: RouteView[] = [
         path: routePaths.root,
         element: <Home />,
       },
+      {
+        path: routePaths.privacy,
+        element: <Privacy />,
+      },
     ],
   },
-  // {
-  //   element: <Login />,
-  //   children: [
-  //     {
-  //       path: routePaths.login,
-  //       element: <SignIn />,
-  //     },
-  //     {
-  //       path: routePaths.forgotPassword,
-  //       element: <PasswordNew />,
-  //     },
-  //   ],
-  // },
   {
     path: routePaths.notFound,
     element: <Navigate to={routePaths.root} />,
