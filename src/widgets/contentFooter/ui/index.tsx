@@ -1,12 +1,12 @@
 import { useMediaQuery } from "@mantine/hooks";
-
+import clsx from "clsx";
 import logo from "@/shared/assets/logo.png";
 import {
   EmailSvg,
   FacebookSvg,
   FooterPhoneSvg,
-  InstagramSvg,
-} from "@/shared/helpers/svg";
+  InstagramSvg, TelegramSvg, YoutubeSvg,
+} from '@/shared/helpers/svg';
 
 import classes from "./index.module.scss";
 import { Flex } from "@mantine/core";
@@ -34,7 +34,8 @@ export const ContentFooter = () => {
               borderBottom: matches ? "none" : "1px solid #0e213d",
             }}
           >
-            <div className={classes.logo}>
+            <div className={clsx([classes.logo], 'cursor-pointer')}  onClick={() =>
+              routeHistory.push(routePaths.root)}>
               <img src={logo as string} alt="" width={"100px"} />
               <h3>UNIQUE AUTO SHIPPING</h3>
             </div>
@@ -85,7 +86,7 @@ export const ContentFooter = () => {
                 <div>
                   <p className="text-sm text-gray-500">Contact us at</p>
                   <h3 className="text-sm text-white font-bold">
-                    support@uniqueautoshipping.org
+                    {TO_GMAIL}
                   </h3>
                 </div>
               </a>
@@ -155,9 +156,27 @@ export const ContentFooter = () => {
                 <FacebookSvg />
               </a>
             </li>
+            <li>
+              <a
+                href="https://www.youtube.com/@uniqueautoshippingllc"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <YoutubeSvg />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://t.me/uniqueautoshippingllc"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <TelegramSvg />
+              </a>
+            </li>
           </ul>
           <div>
-            <span className="text-sm font-medium text-white"
+            <span className="text-sm font-medium text-white cursor-pointer"
                   onClick={() =>
                     routeHistory.push(routePaths.privacy)}
             >

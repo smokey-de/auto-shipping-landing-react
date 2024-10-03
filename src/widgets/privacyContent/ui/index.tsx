@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './index.module.scss';
+import { TO_GMAIL } from '@/shared/helpers/constant';
 
 const privacyContent = [
   {
@@ -134,7 +135,7 @@ export const PrivacyContent = () => {
       <h3 className={classes.contentItemTitle}>Contacting Us</h3>
       <p className={classes.contentText}>Unique Autoshipping LLC</p>
       <p className={classes.contentText}>www.uniqueautoshipping.org</p>
-      <p className={classes.contentText}>support@uniqueautoshipping.org</p>
+      <p className={classes.contentText}>{TO_GMAIL}</p>
       <p className={classes.contentText}>2139 New Era Rd, Unit 8201 Sevierville, Tennessee 37862-5428, United States</p>
       <p className={classes.contentText}>(917) 627-5498 (865) 776-9121</p>
     </div>

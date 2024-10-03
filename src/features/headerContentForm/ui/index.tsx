@@ -27,6 +27,7 @@ const initialValues = {
   vehicle_model: '',
   pick_up_date: '',
   phone_number: '',
+  full_name: '',
 };
 
 type FormValues = typeof initialValues
@@ -51,6 +52,7 @@ export const HeaderContentForm = () => {
       vehicle_make: checkValidLength,
       vehicle_model: checkValidLength,
       pick_up_date: checkValidLength,
+      full_name: checkValidLength,
     },
   });
 
@@ -122,7 +124,7 @@ export const HeaderContentForm = () => {
           } else if (step === 2) {
             validateAndSetErrors(['vehicle_year', 'vehicle_make', 'vehicle_model', 'terms_of_service']);
           } else if (step === 3) {
-            const errors = validateAndSetErrors(['from_email', 'pick_up_date', 'terms_of_service']);
+            const errors = validateAndSetErrors(['full_name','from_email', 'pick_up_date', 'terms_of_service']);
             if (Object.keys(errors).length === 0) {
               handleSubmit(form.getValues());
             }
@@ -276,6 +278,18 @@ const LastStep = ({ form }: { form: UseFormReturnType<FormValues, any> }) => {
         variant="filled"
         size="lg"
         withAsterisk
+        placeholder="Full name"
+        key={form.key('full_name')}
+        {...form.getInputProps('full_name')}
+      />
+
+      <TextInput
+        leftSectionPointerEvents="none"
+        leftSection={<EmailSvg />}
+        radius="md"
+        variant="filled"
+        size="lg"
+        withAsterisk
         placeholder="example@email.com"
         key={form.key('from_email')}
         {...form.getInputProps('from_email')}
@@ -293,7 +307,6 @@ const LastStep = ({ form }: { form: UseFormReturnType<FormValues, any> }) => {
           'Within 7 days',
           'Within 2 weeks',
           'On a specific date',
-          'On a specific date ',
         ]} variant="filled"
         radius="md"
         key={form.key('pick_up_date')}

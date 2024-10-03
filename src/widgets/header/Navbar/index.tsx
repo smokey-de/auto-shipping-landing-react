@@ -9,7 +9,7 @@ export const Navbar = () => {
   const matches = useMediaQuery("(min-width: 1044px)");
 
   return (
-    <div className="flex items-center gap-3 pt-4 pb-4"   onClick={() =>
+    <div className="flex items-center gap-3 pt-4 pb-4 cursor-pointer"   onClick={() =>
       routeHistory.push(routePaths.root)}>
       <div className={classes.navbarLogo}>
         <img src={logo as string} alt="" />
