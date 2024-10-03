@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Navbar from "@/widgets/layout/ui/navbar";
 
 interface IProps {
   children: React.ReactNode;

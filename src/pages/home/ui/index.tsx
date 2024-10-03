@@ -6,13 +6,13 @@ import { WhyChoose } from '@/widgets/whyChoose';
 import { ContentFooter } from '@/widgets/contentFooter';
 
 export const Home = () => {
-    return (
-        <div>
-          <ContentHeader />
-          <RateByTrustPeople />
-          <AboutShip />
-          <WhyChoose />
-          <ContentFooter />
-        </div>
-    );
+  return (
+    <div>
+      <ContentHeader />
+      <RateByTrustPeople />
+      <AboutShip />
+      <WhyChoose />
+      <ContentFooter />
+    </div>
+  );
 };
