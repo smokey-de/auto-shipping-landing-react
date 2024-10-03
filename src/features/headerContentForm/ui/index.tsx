@@ -37,7 +37,11 @@ export const HeaderContentForm = () => {
   useEffect(() => {
     fetch('https://back.usstartruckingllc.com/api/shipping/zip-codes/').then((res) => {
       res.json().then((data) => {
-        setAutoCompleteData(data?.results?.map((item: any) => `${item.city}, ${item.state}, ${item.name}`));
+        setAutoCompleteData(data?.results?.map((item: {
+          city: string;
+          state: string;
+          name: string;
+        }) => `${item.city}, ${item.state}, ${item.name}`));
       });
     })
   }, []);
