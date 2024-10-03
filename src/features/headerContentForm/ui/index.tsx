@@ -9,22 +9,20 @@ import {
 } from "@mantine/core";
 import { CarSvg, FromSvg, ToSvg } from "@/shared/helpers/svg";
 import { useForm } from "@mantine/form";
-import { notifications } from "@mantine/notifications";
-import { sendForm } from "@emailjs/browser";
-import { emailSchema } from "@/shared/helpers/constant";
 import { sendEmail } from "@/shared/helpers/api";
+import { useEffect, useState } from 'react';
 
 type FormValues = ReturnType<
   (values: {
-    from: string[];
+    from: string;
     vehicleSize: string;
-    to: string[];
+    to: string;
     termsOfService: boolean;
     from_email: string;
   }) => {
-    from: string[];
+    from: string;
     vehicleSize: string;
-    to: string[];
+    to: string;
     termsOfService: boolean;
     from_email: string;
   }
@@ -34,12 +32,21 @@ export const HeaderContentForm = () => {
   const fromsvg = <FromSvg />;
   const tosvg = <ToSvg />;
   const carsvg = <CarSvg />;
+  const [autoCompleteData, setAutoCompleteData] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetch('https://back.usstartruckingllc.com/api/shipping/zip-codes/').then((res) => {
+      res.json().then((data) => {
+        setAutoCompleteData(data?.results?.map((item: any) => `${item.city}, ${item.state}, ${item.name}`));
+      });
+    })
+  }, []);
 
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
-      from: [],
-      to: [],
+      from: '',
+      to: '',
       vehicleSize: "",
       from_email: "",
       termsOfService: false,
@@ -143,16 +150,3 @@ export const HeaderContentForm = () => {
     </div>
   );
 };
-
-const autoCompleteData = [
-  "Holtsville, NY, 501",
-  "Holtsville, NY, 544",
-  "Adjuntas, PR, 601",
-  "Aguada, PR, 602",
-  "Aguadilla, PR, 603",
-  "Aguadilla, PR, 604",
-  "Aguadilla, PR, 605",
-  "Maricao, PR, 606",
-  "Anasco, PR, 610",
-  "Angeles, PR, 611",
-];
